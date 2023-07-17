@@ -56,7 +56,7 @@ const App = () => {
   }, []);
 
   const handleSchoolClick = async (jobId) => {
-    console.log("handleSchoolClick");
+    console.log("handleSchoolClick",selectedSchool);
     getOrderByJobId(jobId)
       .then((response) => setSelectedSchool(response.data))
       .catch((error) => console.error(error));

@@ -1,12 +1,31 @@
-.Page-body {
-  padding: 5px;
-  margin: 5px;
+.Page {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   text-align: center;
   align-items: center;
+  justify-content: center;
   align-content: center;
   overflow: hidden;
+}
+.Page-body {
+  width: 80%;
+  padding: 1%;
+  text-align: center;
+}
+.Page-body-header {
+  padding: 1%;
+  margin: 1%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.Page-body-header-title {
+  font-size: x-large;
+  font-weight: bolder;
+}
+.Page-body-header-button {
+  border-radius: 5%;
 }
 .Page-body-card {
   border-radius: 20px;
@@ -14,9 +33,7 @@
   background-color: wheat;
 }
 .Page-body-card-item {
-  border-radius: 20px;
-
-  border-radius: 20px;
+  border-radius: 5%;
   padding: 5px;
   margin: 5px;
   /* display: flex; */
@@ -24,9 +41,22 @@
   /* align-items: flex-start; */
   background-color: whitesmoke;
 }
-.Page-body-card-item-title{
-  padding: 5px;
-  margin: 5px;
+.Page-body-card-item-header {
+  padding: 1%;
+  margin: 1%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.Page-body-card-item-header-title {
+  font-size: large;
+  font-weight: normal;
+}
+.Page-body-card-item-header-button {
+  border-radius: 5%;
+  font-size: large;
+  font-weight: normal;
 }
 .Page-body-card-item-component {
   border-radius: 20px;
@@ -60,4 +90,10 @@
   width: 95%;
   padding: 5px;
   background-color: yellowgreen;
+}
+.check {
+  display: flex;
+}
+.checkbox {
+  width: 20px;
 }
