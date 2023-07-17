@@ -1,0 +1,63 @@
+.Page-body {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  overflow: hidden;
+}
+.Page-body-card {
+  border-radius: 20px;
+
+  background-color: wheat;
+}
+.Page-body-card-item {
+  border-radius: 20px;
+
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  background-color: whitesmoke;
+}
+.Page-body-card-item-title{
+  padding: 5px;
+  margin: 5px;
+}
+.Page-body-card-item-component {
+  border-radius: 20px;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: blue;
+}
+.Page-body-card-item-component-item {
+  box-sizing: content-box;
+  aspect-ratio: 1/1;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 5px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
+.Page-body-card-item-component-item-component {
+  box-sizing: content-box;
+  aspect-ratio: 1/1;
+  border-radius: 20px;
+  margin: 5px;
+  width: 95%;
+  padding: 5px;
+  background-color: yellowgreen;
+}

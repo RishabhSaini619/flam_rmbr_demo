@@ -4,6 +4,7 @@ import logo from "../public/logo.png";
 import "./App.css";
 
 import axios from "axios";
+import Page from "./Page";
 
 const BaseURL = "https://zingcam.prod.flamapp.com/skrull";
 const AuthKey = "02500eb9-eda8-45c2-ba1c-bfb3cef5a02d";
@@ -67,7 +68,7 @@ const App = () => {
         <img src={logo} className="App-logo" alt="Logo" />
       </div>
       <div className="App-body">
-        <div className="App-body-title"> Select your school</div>
+        <div className="App-body-title">Select your school</div>
         <div className="App-body-card">
           {schools.map((school) => (
             <div
@@ -81,59 +82,13 @@ const App = () => {
                 alt="Job Logo"
               />
               <div className="App-body-card-item-title">
-                <span>{school.display_school_name}</span>
+                {school.display_school_name}
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      {selectedSchool && (
-        <div>
-          <h2>Students in {selectedSchool.name}</h2>
-          <div className="App-body-card">
-            {selectedSchool.map((student) => (
-              <div
-                className="App-body-card-item"
-                key={student._id}
-                // onClick={() => handleSchoolClick(student._id)}
-              >
-                <div className="App-body-card-item-title">
-                  <span>{student.receiver_details.name}</span>
-                  <img
-                    className="App-body-card-item-img"
-                    src={student.images[0]}
-                    alt="Job Logo"
-                  />
-                  <img
-                    className="App-body-card-item-thumbnail_url"
-                    src={student.thumbnail_url}
-                    alt="Job Logo"
-                  />
-                  <video
-                    className="App-body-card-item-video_url"
-                    controls
-                    src={student.video_url}
-                    type="video/mp4"
-                  />
-                  <video
-                    className="App-body-card-item-watermark_video_url"
-                    controls
-                    src={student.watermark_video_url}
-                    type="video/mp4"
-                  />
-                  <img
-                    className="App-body-card-item-gif_url"
-                    controls
-                    src={student.gif_url}
-                    alt="Job Logo"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <Page selectedSchool={selectedSchool} />
     </main>
   );
 };
