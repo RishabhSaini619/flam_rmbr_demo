@@ -35,7 +35,7 @@ align-content: center;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
-  background: wheat;
+  /* background: wheat; */
 }
 .App-body-title{
   padding: 1%;
