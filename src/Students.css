@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 .Page-body {
-  width: 80%;
+  width: 90%;
   padding: 1%;
   text-align: center;
 }
@@ -35,7 +35,8 @@
   background-color: wheat; */
 }
 .Page-body-card-item {
-  /* border-radius: 5%; */
+  border-radius: 20px;
+  border: solid 2px black ;
   padding: 1%;
   margin: 1%;
   /* display: flex; */
@@ -84,13 +85,11 @@
   /* background-color: whitesmoke; */
 }
 .Page-body-card-item-component-item-component {
-  box-sizing: content-box;
+  box-sizing: border-box;
   aspect-ratio: 1/1;
-  /* border-radius: 20px; */
   margin: 1%;
   width: 95%;
   padding: 1%;
-  /* background-color: yellowgreen; */
 }
 .check {
   display: flex;
@@ -99,4 +98,11 @@
 }
 .checkbox {
   width: 25px;
+}
+.Page-Buttons{
+  padding: 1%;
+  margin: 5%;
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
 }
