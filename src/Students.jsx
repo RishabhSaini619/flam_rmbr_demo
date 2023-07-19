@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CSVLink } from "react-csv";
 import "./Students.css";
+import downloadPng from "../public/download.png";
 
 const StudentPage = ({ selectedSchool }) => {
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState({});
@@ -126,18 +127,24 @@ const StudentPage = ({ selectedSchool }) => {
       {selectedSchool && (
         <div className="Page-body">
           <div className="Page-body-header">
+            Batch
             <div className="Page-body-header-title">
-              Students List in "{selectedSchool[0].job_name}"
+              {selectedSchool[0].job_name}
             </div>
-            <button className="Page-body-header-button">
-              <CSVLink
-                data={generateCsvData()}
-                filename="students.csv"
-                className="Page-body-header-link"
-              >
-                Download
-              </CSVLink>
-            </button>
+            <img
+              className="Page-body-card-item-header-button"
+              src={downloadPng}
+              width={"50px"}
+              height={"50px"}
+              alt="Job Logo"
+              onClick={
+                <CSVLink
+                  data={generateCsvData()}
+                  filename="students.csv"
+                  className="Page-body-header-link"
+                ></CSVLink>
+              }
+            />
           </div>
           <div className="Page-body-card">
             {showStudent &&
@@ -268,7 +275,9 @@ const StudentPage = ({ selectedSchool }) => {
         >
           Previous
         </button>
-        <div>Current Page : {page + 1} / {Math.ceil(selectedSchool.length/limit)}</div>
+        <div>
+          Current Page : {page + 1} / {Math.ceil(selectedSchool.length / limit)}
+        </div>
         <button
           onClick={pageUp}
           disabled={limit * page + limit > selectedSchool.length}

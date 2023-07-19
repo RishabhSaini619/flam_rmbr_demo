@@ -21,33 +21,33 @@
   text-align: center;
 }
 .Page-body-header {
-  padding: 1%;
+  padding: 2%;
   margin: 1%;
   display: flex;
   align-content: center;
   justify-content: space-between;
   align-items: center;
+  border-radius: 20px;
+
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
 }
 .Page-body-header-title {
   font-size: x-large;
   font-weight: bolder;
+  font-style: oblique ,   italic;
 }
 .Page-body-header-button {
-  /* border-radius: 5%; */
-
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
   font-size: large;
   font-weight: normal;
+  border-radius: 20px;
+
 }
 
 .Page-body-card-item {
   border-radius: 20px;
-  border: solid 2px black;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
   padding: 1%;
-  margin: 1%;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: flex-start; */
-  /* background-color: whitesmoke; */
 }
 .Page-body-card-item-header {
   padding: 1%;
@@ -56,6 +56,7 @@
   align-content: center;
   justify-content: space-between;
   align-items: center;
+  
 }
 .Page-body-card-item-header-title {
   font-size: large;
@@ -67,9 +68,6 @@
   font-weight: normal;
 }
 .Page-body-card-item-component {
-  /* border-radius: 20px; */
-  padding: 1%;
-  margin: 1%;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -78,9 +76,7 @@
 .Page-body-card-item-component-item {
   box-sizing: content-box;
   aspect-ratio: 1/1;
-  /* border-radius: 20px; */
-  margin: 1%;
-  padding: 1%;
+  
   width: 95%;
   display: flex;
   flex-direction: column;
@@ -90,6 +86,7 @@
   /* background-color: whitesmoke; */
 }
 .Page-body-card-item-component-item-component {
+  border-radius: 20px;
   box-sizing: border-box;
   aspect-ratio: 1/1;
   margin: 1%;
