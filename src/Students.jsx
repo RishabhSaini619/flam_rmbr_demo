@@ -12,13 +12,11 @@ const StudentPage = ({ selectedSchool }) => {
   const pageDown = () => {
     if (page > 0) {
       setPage(page - 1);
-      // setPageCount(limit -limit);
     }
   };
 
   const pageUp = () => {
     setPage(page + 1);
-    //  setPageCount(limit+limit);
   };
 
   useEffect(() => {
@@ -73,13 +71,18 @@ const StudentPage = ({ selectedSchool }) => {
       const csvEntry = {
         schoolId: selectedStudent.job_id,
         schoolName: selectedStudent.job_name,
-        studentId: selectedStudent._id,
+        orderId: selectedStudent._id,
         studentName: selectedStudent.receiver_details.name,
         image: selectedCheckboxes[studentId].image ? "Invalid" : "",
         thumbnail: selectedCheckboxes[studentId].thumbnail ? "Invalid" : "",
         video: selectedCheckboxes[studentId].video ? "Invalid" : "",
         watermark: selectedCheckboxes[studentId].watermark ? "Invalid" : "",
         gif: selectedCheckboxes[studentId].gif ? "Invalid" : "",
+        imageURL: selectedStudent.images,
+        thumbnailURL: selectedStudent.thumbnail_url,
+        videoURL: selectedStudent.video_url,
+        watermarkURL: selectedStudent.watermark_video_url,
+        gifURL: selectedStudent.gif_url,
       };
 
       console.log("CSV Entry:", csvEntry); // Do something with the CSV entry (e.g., add it to a CSV file)
@@ -97,13 +100,18 @@ const StudentPage = ({ selectedSchool }) => {
         const csvEntry = {
           schoolId: student.job_id,
           schoolName: student.job_name,
-          studentId: student._id,
+          orderId: student._id,
           studentName: student.receiver_details.name,
           image: studentCheckboxes.image ? "Invalid" : "",
           thumbnail: studentCheckboxes.thumbnail ? "Invalid" : "",
           video: studentCheckboxes.video ? "Invalid" : "",
           watermark: studentCheckboxes.watermark ? "Invalid" : "",
           gif: studentCheckboxes.gif ? "Invalid" : "",
+          imageURL: student.images,
+          thumbnailURL: student.thumbnail_url,
+          videoURL: student.video_url,
+          watermarkURL: student.watermark_video_url,
+          gifURL: student.gif_url,
         };
 
         csvData.push(csvEntry);

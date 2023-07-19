@@ -42,7 +42,7 @@ const Schools = ({selectedSchool, setSelectedSchool}) => {
                 {school.display_school_name}
               </div>
             </div>
-          ))}
+          )).sort()}
         </div>
       </main>
   )
