@@ -7,7 +7,7 @@ const StudentPage = ({ selectedSchool }) => {
   const [selectedStudent, setSelectedStudent] = useState([]);
   const [showStudent, setShowStudent] = useState([]);
   const [page, setPage] = useState(0);
-  const limit = 5;
+  const limit = 10;
 
   const pageDown = () => {
     if (page > 0) {
@@ -73,16 +73,16 @@ const StudentPage = ({ selectedSchool }) => {
         schoolName: selectedStudent.job_name,
         orderId: selectedStudent._id,
         studentName: selectedStudent.receiver_details.name,
-        image: selectedCheckboxes[studentId].image ? "Invalid" : "",
-        thumbnail: selectedCheckboxes[studentId].thumbnail ? "Invalid" : "",
-        video: selectedCheckboxes[studentId].video ? "Invalid" : "",
-        watermark: selectedCheckboxes[studentId].watermark ? "Invalid" : "",
-        gif: selectedCheckboxes[studentId].gif ? "Invalid" : "",
         imageURL: selectedStudent.images,
         thumbnailURL: selectedStudent.thumbnail_url,
         videoURL: selectedStudent.video_url,
         watermarkURL: selectedStudent.watermark_video_url,
         gifURL: selectedStudent.gif_url,
+        image: selectedCheckboxes[studentId].image ? "Invalid" : "",
+        thumbnail: selectedCheckboxes[studentId].thumbnail ? "Invalid" : "",
+        video: selectedCheckboxes[studentId].video ? "Invalid" : "",
+        watermark: selectedCheckboxes[studentId].watermark ? "Invalid" : "",
+        gif: selectedCheckboxes[studentId].gif ? "Invalid" : "",
       };
 
       console.log("CSV Entry:", csvEntry); // Do something with the CSV entry (e.g., add it to a CSV file)
@@ -102,16 +102,16 @@ const StudentPage = ({ selectedSchool }) => {
           schoolName: student.job_name,
           orderId: student._id,
           studentName: student.receiver_details.name,
-          image: studentCheckboxes.image ? "Invalid" : "",
-          thumbnail: studentCheckboxes.thumbnail ? "Invalid" : "",
-          video: studentCheckboxes.video ? "Invalid" : "",
-          watermark: studentCheckboxes.watermark ? "Invalid" : "",
-          gif: studentCheckboxes.gif ? "Invalid" : "",
           imageURL: student.images,
           thumbnailURL: student.thumbnail_url,
           videoURL: student.video_url,
           watermarkURL: student.watermark_video_url,
           gifURL: student.gif_url,
+          image: studentCheckboxes.image ? "Invalid" : "",
+          thumbnail: studentCheckboxes.thumbnail ? "Invalid" : "",
+          video: studentCheckboxes.video ? "Invalid" : "",
+          watermark: studentCheckboxes.watermark ? "Invalid" : "",
+          gif: studentCheckboxes.gif ? "Invalid" : "",
         };
 
         csvData.push(csvEntry);
@@ -268,7 +268,7 @@ const StudentPage = ({ selectedSchool }) => {
         >
           Previous
         </button>
-        Current Page : {page + 1}
+        <div>Current Page : {page + 1} / {Math.ceil(selectedSchool.length/limit)}</div>
         <button
           onClick={pageUp}
           disabled={limit * page + limit > selectedSchool.length}
