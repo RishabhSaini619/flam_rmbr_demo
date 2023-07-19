@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import Page from "./Students";
 import Header from "./Header";
-import SchoolPage from "./SchoolPage";
+import Schools from "./Schools";
+import StudentPage from "./Students";
+import "./App.css";
+
 
 const App = () => {
   const [selectedSchool, setSelectedSchool] = useState([]);
-  const [isStudent, setIsStudent] = useState(false);
 
   return (
     <main className="App">
       <Header />
       {!selectedSchool.length ? (
-        <SchoolPage
+        <Schools
           selectedSchool={selectedSchool}
           setSelectedSchool={setSelectedSchool}
         />
       ) : (
-        <Page selectedSchool={selectedSchool} />
+        <StudentPage selectedSchool={selectedSchool} />
       )}
     </main>
   );

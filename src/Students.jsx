@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CSVLink } from "react-csv";
 import "./Students.css";
-import Header from "./Header";
 
 const StudentPage = ({ selectedSchool }) => {
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState({});
@@ -9,31 +8,35 @@ const StudentPage = ({ selectedSchool }) => {
   const [showStudent, setShowStudent] = useState([]);
   const [page, setPage] = useState(0);
   const limit = 5;
-  const [pageCount, setPageCount] = useState(limit);
 
-  const pageDown =  () => {
-    if(page > 0){
+  const pageDown = () => {
+    if (page > 0) {
       setPage(page - 1);
-      setPageCount(pageCount -limit);
+      // setPageCount(limit -limit);
     }
-
   };
-  
-  const pageUp =  () => {
-   setPage(page + 1);
-   setPageCount(pageCount+limit);
+
+  const pageUp = () => {
+    setPage(page + 1);
+    //  setPageCount(limit+limit);
   };
 
   useEffect(() => {
     let student = [];
-    if (selectedSchool.length && (pageCount * page + pageCount)<selectedSchool.length) {
-      for (let i = page * pageCount; i < pageCount * page + limit; i++) {
+
+    const size =
+      limit * page + limit > selectedSchool.length
+        ? selectedSchool.length
+        : limit * page + limit;
+    console.log(page * limit, " ", limit * page + limit, "->", size);
+    if (selectedSchool.length) {
+      for (let i = page * limit; i < size; i++) {
         student.push(selectedSchool[i]);
       }
 
       setShowStudent(student);
     }
-  }, [selectedSchool,pageCount]);
+  }, [selectedSchool, page]);
 
   // Function to handle checkbox changes
   const handleCheckboxChange = (event, studentId) => {
@@ -64,6 +67,7 @@ const StudentPage = ({ selectedSchool }) => {
       selectedSchool.find((student) => student._id === studentId)
     );
     console.log("Add to CSV Click: studentId=", studentId);
+    console.log("Add to CSV Click: studentId=", selectedStudent);
 
     if (selectedStudent) {
       const csvEntry = {
@@ -110,11 +114,13 @@ const StudentPage = ({ selectedSchool }) => {
   };
 
   return (
-    <main className="Page">
+    <main className="Students">
       {selectedSchool && (
         <div className="Page-body">
           <div className="Page-body-header">
-            <div className="Page-body-header-title">Students List</div>
+            <div className="Page-body-header-title">
+              Students List in "{selectedSchool[0].job_name}"
+            </div>
             <button className="Page-body-header-button">
               <CSVLink
                 data={generateCsvData()}
@@ -126,7 +132,8 @@ const StudentPage = ({ selectedSchool }) => {
             </button>
           </div>
           <div className="Page-body-card">
-            {showStudent.length &&
+            {showStudent &&
+              showStudent.length &&
               showStudent.map((student) => (
                 <div className="Page-body-card-item" key={student._id}>
                   <div className="Page-body-card-item-header">
@@ -246,11 +253,19 @@ const StudentPage = ({ selectedSchool }) => {
         </div>
       )}
       <div className="Page-Buttons">
-        <button onClick={pageDown} disabled={page===0} className="Page-body-header-button">
+        <button
+          onClick={pageDown}
+          disabled={page === 0}
+          className="Page-body-header-button"
+        >
           Previous
         </button>
-        Current Page : {page+1}
-        <button onClick={pageUp} className="Page-body-header-button">
+        Current Page : {page + 1}
+        <button
+          onClick={pageUp}
+          disabled={limit * page + limit > selectedSchool.length}
+          className="Page-body-header-button"
+        >
           Next
         </button>
       </div>

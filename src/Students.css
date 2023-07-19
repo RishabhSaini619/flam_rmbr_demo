@@ -1,15 +1,23 @@
-.Page {
+.Students {
+  width: 80%;
+  height: auto;
+  font-size: large;
+  padding: 1%;
+  margin-top: 3rem;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
   flex-direction: column;
   text-align: center;
-  align-items: center;
   justify-content: center;
-  align-content: center;
   overflow: hidden;
 }
 .Page-body {
   width: 90%;
   padding: 1%;
+  margin-top: 3rem;
+
   text-align: center;
 }
 .Page-body-header {
@@ -25,10 +33,11 @@
   font-weight: bolder;
 }
 .Page-body-header-button {
- /* border-radius: 5%; */
- 
- font-size: large;
- font-weight: normal;}
+  /* border-radius: 5%; */
+
+  font-size: large;
+  font-weight: normal;
+}
 .Page-body-card {
   /* border-radius: 20px;
 
@@ -36,7 +45,7 @@
 }
 .Page-body-card-item {
   border-radius: 20px;
-  border: solid 2px black ;
+  border: solid 2px black;
   padding: 1%;
   margin: 1%;
   /* display: flex; */
@@ -99,7 +108,7 @@
 .checkbox {
   width: 25px;
 }
-.Page-Buttons{
+.Page-Buttons {
   padding: 1%;
   margin: 5%;
   width: 500px;
