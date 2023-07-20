@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import Schools from "./Schools";
-import StudentPage from "./Students";
+import Schools from "./Components/Schools/Schools";
+import StudentPage from "./Components/Students/Students";
 import "./App.css";
 
 
@@ -10,7 +9,6 @@ const App = () => {
 
   return (
     <main className="App">
-      <Header />
       {!selectedSchool.length ? (
         <Schools
           selectedSchool={selectedSchool}
