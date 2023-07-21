@@ -1,138 +1,58 @@
 .Students {
   width: 80%;
-  height: auto;
-  font-size: large;
   padding: 1%;
   margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
   flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  align-items: center;
+  align-content: center;
   overflow: hidden;
-  color: darkblue;
+  justify-content: center;
+  color: rgb(34, 36, 84);
 }
-.Header-logo {
-  width: 7.5rem;
-  height: 2rem;
-}
-.Header {
-  color: darkblue;
-  display: flex;
-  flex-direction: row;
-  position: fixed;
-  align-content: center;
-  justify-content: space-around;
-  top: 0%;
-  z-index: 1;
-  padding-top: 1%;
-  padding-bottom: 1%;
+
+.Student_Card {
+  border-radius: 20px;
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
-  width: 100%;
-  align-items: center;
-  flex-wrap: wrap;
+  padding: 1%;
+  margin: 1%;
 }
-.Footer{
-  width: 100%;
-  height: 2%;
+.Student_Card_Header {
+  /* padding: 1%;
+  margin: 1%; */
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0%;
-  z-index: 1;
-  background-color: whitesmoke;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  box-shadow: 0px -4px 16px 0px rgba(0, 0, 0, 0.16);
-}
-
-.Page-body {
-  width: 90%;
-  padding: 1%;
-  margin-top: 3rem;
-
-  text-align: center;
-}
-.Page-body-header {
-  padding: 2%;
-  margin: 1%;
-  display: flex;
-  align-content: center;
   justify-content: space-between;
   align-items: center;
-  border-radius: 20px;
-
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
-}
-.Page-body-header-title {
-  color: darkblue;
-  font-size: x-large;
-  font-weight: bolder;
-  font-style: italic;
-}
-.Page-body-header-button {
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
-  font-size: large;
-  font-weight: normal;
-  border-radius: 20px;
-  color: darkblue;
-
-
 }
 
-.Page-body-card-item {
-  border-radius: 20px;
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
-  padding: 1%;
-}
-.Page-body-card-item-header {
-  padding: 1%;
-  margin: 1%;
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
-  
-}
-.Page-body-card-item-header-title {
-  font-size: large;
-  font-weight: normal;
-}
-.Page-body-card-item-header-button {
-  /* border-radius: 5%; */
-  font-size: large;
-  font-weight: normal;
-}
-.Page-body-card-item-component {
+.Student_Card_Content {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  /* background-color: blue; */
 }
-.Page-body-card-item-component-item {
+.Student_Card_Content_Item {
   box-sizing: content-box;
   aspect-ratio: 1/1;
-  
-  width: 95%;
+  width: 100%;
+  padding: 0.5%;
+  margin: 0.5%;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
   align-items: center;
-  /* background-color: whitesmoke; */
 }
-.Page-body-card-item-component-item-component {
+.Student_Card_Content_Item_Image{
   border-radius: 20px;
   box-sizing: border-box;
   aspect-ratio: 1/1;
-  margin: 1%;
-  width: 95%;
-  padding: 1%;
+  width: 100%;
+  border: 0.1px solid rgba(0, 0, 0, 0.16);
 }
+
 .check {
   display: flex;
   margin: 2%;
@@ -141,10 +61,58 @@
 .checkbox {
   width: 25px;
 }
-.Page-Buttons {
-  padding: 1%;
-  margin: 5%;
-  width: 500px;
+
+.Footer {
+  width: 100%;
+  height: 3%;
   display: flex;
+  flex-direction: row;
+  align-content: center;
   justify-content: space-around;
+  position: fixed;
+  align-items: center;
+  bottom: 0%;
+  z-index: 1;
+  background-color: whitesmoke;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  box-shadow: 0px -4px 16px 0px rgba(0, 0, 0, 0.16);
 }
+.Page{
+  padding: 1%;
+  width: 200px;
+  position: fixed;
+  bottom: 0%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+.PageButton {
+  width: 30px;
+  height: 30px;
+}
+.AddCSV{
+  width: 50px;
+  height: 50px;
+}
+.Download{
+  position: fixed;
+  right: 2%;
+  bottom: -0.5%;
+}
+.DownloadCSV{
+  width: 75px;
+  height: 50px;
+}
+.Button:hover {
+  background-color: rgba(0, 0, 0, 0.05); 
+}
+.Page:hover {
+  background-color: rgb(0, 0, 255,0.1); 
+}
+.Page:active {
+  background-color: rgb(250, 250, 255,0.1); 
+}
+

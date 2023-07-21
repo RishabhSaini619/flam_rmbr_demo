@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Schools.css";
 import { getAll, getOrderByJobId } from "../../APIServices";
-import logo from "../../../public/logo.png";
 
 const Schools = ({ selectedSchool, setSelectedSchool }) => {
   const [schools, setSchools] = useState([]);
@@ -22,12 +21,8 @@ const Schools = ({ selectedSchool, setSelectedSchool }) => {
 
   return (
     <main className="School">
-      <header className="Header">
-        <img src={logo} className="Logo" alt="Logo" />
-      </header>
-      <div className="Body">
-        <header className="Headline">Select your school</header>
-        <div className="Content">
+        <header className="Heading">Select your school</header>
+        <div className="School_Content">
           {schools
             .map((school) => (
               <div
@@ -42,11 +37,10 @@ const Schools = ({ selectedSchool, setSelectedSchool }) => {
                   src={school.display_logo_url}
                   alt="Job_Image"
                 />
-                <div className="Title">{school.display_school_name}</div>
+                <div className="Label">{school.display_school_name}</div>
               </div>
             ))
             .sort()}
-        </div>
       </div>
     </main>
   );

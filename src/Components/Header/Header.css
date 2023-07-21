@@ -1,0 +1,17 @@
+.Header {
+  height: 7.5%;
+  position: fixed;
+  top: 0%;
+  z-index: 1;
+  background-color: white;
+
+  color: white;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
+  width: 100%;
+}
+.Logo {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 128px;
+  height: 47px;
+}

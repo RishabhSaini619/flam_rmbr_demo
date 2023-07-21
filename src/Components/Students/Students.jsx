@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CSVLink } from "react-csv";
 import "./Students.css";
-// import downloadPng from "../../../public/download.png";
-import logo from "../../../public/logo.png";
+// import { showToast } from "../Toast/Toast";
+import cloudAdd from "../../../public/AddCSV.png";
+import cloudDownload from "../../../public/ExportCSV.png";
+import pageNext from "../../../public/pageNext.png";
+import pagePrevious from "../../../public/pagePrevious.png";
 
 const StudentPage = ({ selectedSchool }) => {
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState({});
@@ -38,7 +41,6 @@ const StudentPage = ({ selectedSchool }) => {
     }
   }, [selectedSchool, page]);
 
-  // Function to handle checkbox changes
   const handleCheckboxChange = (event, studentId) => {
     const checkboxId = event.target.id;
     const checkboxValue = event.target.checked;
@@ -59,9 +61,12 @@ const StudentPage = ({ selectedSchool }) => {
         [checkboxId]: checkboxValue,
       },
     }));
+    // showToast(`Checkbox for student ${studentId} is ${checkboxValue ? "checked" : "unchecked"}`, "info");
+    // showToast(`value=${checkboxValue}`);
+
+
   };
 
-  // Function to handle "Add 2 CSV" button click
   const handleAddToCsvClick = (studentId) => {
     setSelectedStudent(
       selectedSchool.find((student) => student._id === studentId)
@@ -87,11 +92,12 @@ const StudentPage = ({ selectedSchool }) => {
         gif: selectedCheckboxes[studentId].gif ? "Invalid" : "",
       };
 
-      console.log("CSV Entry:", csvEntry); // Do something with the CSV entry (e.g., add it to a CSV file)
+      console.log("CSV Entry:", csvEntry);
+      // showToast(`Student ${selectedStudent.receiver_details.name} added to CSV`, "success");
+
     }
   };
 
-  // Generate CSV data from selected checkboxes
   const generateCsvData = () => {
     const csvData = [];
     selectedSchool.forEach((student) => {
@@ -117,6 +123,11 @@ const StudentPage = ({ selectedSchool }) => {
         };
 
         csvData.push(csvEntry);
+
+        // if (csvData.length === 0) {
+        //   showToast("No students selected for CSV", "warning");
+        // } else showToast(`CSV is Generated for ${student.job_name}`, "success");
+
       }
     });
 
@@ -125,166 +136,143 @@ const StudentPage = ({ selectedSchool }) => {
 
   return (
     <main className="Students">
-      <header className="Header">
-        <img src={logo} className="Header-logo" alt="Logo" />
-        <div className="Page-body-header-title">
-          {selectedSchool[0].job_name}
-        </div>
-        <button className="Page-body-header-button">
-          <CSVLink
-            data={generateCsvData()}
-            filename="students.csv"
-            className="Page-body-header-link"
-          >
-            Download
-          </CSVLink>
-        </button>
-      </header>
-      <div className="Body">
-        {selectedSchool && (
-          <div className="Page-body">
-            <div className="Page-body-card">
-              {showStudent &&
-                showStudent.length &&
-                showStudent.map((student) => (
-                  <div className="Page-body-card-item" key={student._id}>
-                    <div className="Page-body-card-item-header">
-                      <div className="Page-body-card-item-header-title">
-                        {student.receiver_details.name}
-                      </div>
-                      <button
-                        className="Page-body-card-item-header-button"
-                        onClick={() => handleAddToCsvClick(student._id)}
-                      >
-                        Add 2 CSV
-                      </button>
-                    </div>
-                    <div className="Page-body-card-item-component">
-                      <div className="Page-body-card-item-component-item">
-                        <img
-                          className="Page-body-card-item-component-item-component"
-                          src={student.images[0]}
-                          alt="Job Logo"
-                        />
-                        <div className="check">
-                          <input
-                            className="checkbox"
-                            type="checkbox"
-                            id={`image`}
-                            onChange={(event) =>
-                              handleCheckboxChange(event, student._id)
-                            }
-                          />
-                          <div className="Page-body-card-item-title">
-                            Images
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="Page-body-card-item-component-item">
-                        <img
-                          className="Page-body-card-item-component-item-component"
-                          src={student.thumbnail_url}
-                          alt="Job Logo"
-                        />
-                        <div className="check">
-                          <input
-                            className="checkbox"
-                            type="checkbox"
-                            id={`thumbnail`}
-                            onChange={(event) =>
-                              handleCheckboxChange(event, student._id)
-                            }
-                          />
-                          <div className="Page-body-card-item-title">
-                            Thumbnail
-                          </div>
-                        </div>
-                      </div>
-                      <div className="Page-body-card-item-component-item">
-                        <video
-                          className="Page-body-card-item-component-item-component"
-                          controls
-                          src={student.video_url}
-                          type="video/mp4"
-                        />
-                        <div className="check">
-                          <input
-                            className="checkbox"
-                            type="checkbox"
-                            id={`video`}
-                            onChange={(event) =>
-                              handleCheckboxChange(event, student._id)
-                            }
-                          />
-                          <div className="Page-body-card-item-title">Video</div>
-                        </div>
-                      </div>
-                      <div className="Page-body-card-item-component-item">
-                        <video
-                          className="Page-body-card-item-component-item-component"
-                          controls
-                          src={student.watermark_video_url}
-                          type="video/mp4"
-                        />
-                        <div className="check">
-                          <input
-                            className="checkbox"
-                            type="checkbox"
-                            id={`watermark`}
-                            onChange={(event) =>
-                              handleCheckboxChange(event, student._id)
-                            }
-                          />
-                          <div className="Page-body-card-item-title">
-                            Watermark
-                          </div>
-                        </div>
-                      </div>
-                      <div className="Page-body-card-item-component-item">
-                        <img
-                          className="Page-body-card-item-component-item-component"
-                          controls
-                          src={student.gif_url}
-                          alt="Job Logo"
-                        />
-                        <div className="check">
-                          <input
-                            className="checkbox"
-                            type="checkbox"
-                            id={`gif`}
-                            onChange={(event) =>
-                              handleCheckboxChange(event, student._id)
-                            }
-                          />
-                          <div className="Page-body-card-item-title">GIF</div>
-                        </div>
-                      </div>
-                    </div>
+        {showStudent &&
+          showStudent.length &&
+          showStudent.map((student) => (
+            <div className="Student_Card" key={student._id}>
+              <div className="Student_Card_Header">
+                <div className="Heading">{student.receiver_details.name}</div>
+                <img
+                  className="AddCSV"
+                  src={cloudAdd}
+                  onClick={() => handleAddToCsvClick(student._id)}
+                  alt="cloudAdd"
+                />
+              </div>
+              <div className="Student_Card_Content">
+                <div className="Student_Card_Content_Item">
+                  <img
+                    className="Student_Card_Content_Item_Image"
+                    src={student.images[0]}
+                    alt="Job Logo"
+                  />
+                  <div className="check">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      id={`image`}
+                      onChange={(event) =>
+                        handleCheckboxChange(event, student._id)
+                      }
+                    />
+                    <div className="Label">Images</div>
                   </div>
-                ))}
+                </div>
+                <div className="Student_Card_Content_Item">
+                  <img
+                    className="Student_Card_Content_Item_Image"
+                    src={student.thumbnail_url}
+                    alt="Job Logo"
+                  />
+                  <div className="check">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      id={`thumbnail`}
+                      onChange={(event) =>
+                        handleCheckboxChange(event, student._id)
+                      }
+                    />
+                    <div className="Label">Thumbnail</div>
+                  </div>
+                </div>
+                <div className="Student_Card_Content_Item">
+                  <video
+                    className="Student_Card_Content_Item_Image"
+                    controls
+                    src={student.video_url}
+                    type="video/mp4"
+                  />
+                  <div className="check">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      id={`video`}
+                      onChange={(event) =>
+                        handleCheckboxChange(event, student._id)
+                      }
+                    />
+                    <div className="Label">Video</div>
+                  </div>
+                </div>
+                <div className="Student_Card_Content_Item">
+                  <video
+                    className="Student_Card_Content_Item_Image"
+                    controls
+                    src={student.watermark_video_url}
+                    type="video/mp4"
+                  />
+                  <div className="check">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      id={`watermark`}
+                      onChange={(event) =>
+                        handleCheckboxChange(event, student._id)
+                      }
+                    />
+                    <div className="Label">Watermark</div>
+                  </div>
+                </div>
+                <div className="Student_Card_Content_Item">
+                  <img
+                    className="Student_Card_Content_Item_Image"
+                    controls
+                    src={student.gif_url}
+                    alt="Job Logo"
+                  />
+                  <div className="check">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      id={`gif`}
+                      onChange={(event) =>
+                        handleCheckboxChange(event, student._id)
+                      }
+                    />
+                    <div className="Label">GIF</div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          ))}
       <footer className="Footer">
-        <button
-          onClick={pageDown}
-          disabled={page === 0}
-          className="Page-body-header-button"
-        >
-          Previous
-        </button>
-        <div>
-          Current Page : {page + 1} / {Math.ceil(selectedSchool.length / limit)}
+        <div className="Title">{selectedSchool[0].job_name}</div>
+
+        <div className="Page">
+          <img
+            className="PageButton"
+            src={pagePrevious}
+            onClick={pageDown}
+            alt="pageDown"
+          />
+          <div className="Label">
+            Page : {page + 1} /{Math.ceil(selectedSchool.length / limit)}
+          </div>
+          <img
+            className="PageButton"
+            src={pageNext}
+            onClick={pageUp}
+            alt="pageUp"
+          />
         </div>
-        <button
-          onClick={pageUp}
-          disabled={limit * page + limit > selectedSchool.length}
-          className="Page-body-header-button"
+        <CSVLink className="Download"
+          data={generateCsvData()}
+          filename={selectedSchool[0].job_name}
+          type=".csv"
         >
-          Next
-        </button>
+          <img src={cloudDownload} alt="DownloadCSV" className="DownloadCSV" />
+        </CSVLink>
       </footer>
     </main>
   );
