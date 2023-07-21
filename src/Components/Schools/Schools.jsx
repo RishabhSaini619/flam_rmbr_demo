@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Schools.css";
-import { getAll, getOrderByJobId } from "../../APIServices";
+import { getAll, getOrderByJobId } from "../APIServices";
 
 const Schools = ({ selectedSchool, setSelectedSchool }) => {
   const [schools, setSchools] = useState([]);
