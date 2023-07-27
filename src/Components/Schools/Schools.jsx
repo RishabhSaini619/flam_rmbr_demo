@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./Schools.css";
 import { getAll, getOrderByJobId } from "../APIServices";
+import { useLocation } from "react-router-dom";
+
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
 
 const Schools = ({ selectedSchool, setSelectedSchool }) => {
   const [schools, setSchools] = useState([]);
+
+  const query = useQuery();
 
   useEffect(() => {
     console.log("useEffect");
@@ -15,9 +24,15 @@ const Schools = ({ selectedSchool, setSelectedSchool }) => {
   const handleSchoolClick = async (jobId) => {
     console.log("handleSchoolClick", selectedSchool);
     getOrderByJobId(jobId)
-      .then((response) => setSelectedSchool(response.data))
+      .then((response) => 
+        (query.get('id')) ? setSelectedSchool(response.data.filter((item) => item.photo_filename.includes(query.get('id')))) : setSelectedSchool(response.data)
+      )
       .catch((error) => console.error(error));
   };
+
+  useEffect(() => {
+    handleSchoolClick(query.get('schooldId'));
+  }, [query.get('schooldId')]);
 
   return (
     <main className="School">

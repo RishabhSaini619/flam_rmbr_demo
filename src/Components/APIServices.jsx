@@ -21,7 +21,7 @@ export const getAll = async () => {
 };
 
 
-export const getOrderByJobId = async (jobId) => {
+export const getOrderByJobId = async (jobId, param) => {
   try {
     const response = await axios.get(
       `${BaseURL}/orders/getOrderByJobId/${jobId}`,
@@ -31,7 +31,7 @@ export const getOrderByJobId = async (jobId) => {
         },
       }
     );
-    console.log("getOrderByJobId", response.data);
+    console.log("getOrderByJobId", response.data.data);
     return response.data;
   } catch (error) {
     console.error(error);
