@@ -261,12 +261,6 @@ const StudentPage = ({ selectedSchool }) => {
             alt="pageDown"
           />
           <div className="Label">
-            <input
-              type="number"
-              value={userPageInput}
-              onChange={handleUserPageInput}
-              onSubmit={handleSetPage}
-            />
             Page : {page + 1} /{totalPages}
           </div>
           <img
