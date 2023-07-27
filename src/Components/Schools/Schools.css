@@ -11,7 +11,12 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
+.schoolHeader{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+justify-content: space-around;
+}
 .School_Content {
   padding: 5px;
   margin: 5px;

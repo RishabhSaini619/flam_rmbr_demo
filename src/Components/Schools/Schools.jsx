@@ -25,7 +25,7 @@ const Schools = ({ selectedSchool, setSelectedSchool }) => {
     console.log("handleSchoolClick", selectedSchool);
     getOrderByJobId(jobId)
       .then((response) => 
-        (query.get('id')) ? setSelectedSchool(response.data.filter((item) => item.photo_filename.includes(query.get('id')))) : setSelectedSchool(response.data)
+        (query.get('id')) ? setSelectedSchool(response.data.filter((item) => item.receiver_details.name.includes(query.get('id')))) : setSelectedSchool(response.data)
       )
       .catch((error) => console.error(error));
   };
@@ -36,7 +36,20 @@ const Schools = ({ selectedSchool, setSelectedSchool }) => {
 
   return (
     <main className="School">
-        <header className="Heading">Select your school</header>
+      <div className="schoolHeader">
+        <div className="Heading">
+          Select your school</div>
+          <div className="search">
+            <div className="searchcontent">
+              <div className="searchBar">search bar</div>
+              <div className="searchBtn">search</div>
+            </div>
+            <div className="searchStudent">
+            <div className="searchBar">search bar</div>
+              <div className="searchBtn">search</div>
+            </div>
+          </div>
+          </div>
         <div className="School_Content">
           {schools
             .map((school) => (
