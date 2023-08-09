@@ -1,4 +1,6 @@
 .Header {
+  display: flex;
+  justify-content: center;
   height: 7.5%;
   position: fixed;
   top: 0%;
